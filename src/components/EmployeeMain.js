@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route } from "react-router-dom";
 import ProfileAndActivity from "./customer/ProfileAndActivity";
 import Demographics from "./customer/Demographics";
-import MyOrders from "./customer/MyJobApplications";
+import MyOrders from "./customer/MyOrders";
 import ItemSearch from "./customer/JobSearch";
 import RetailShops from "./retailShop/RetailsShops";
 

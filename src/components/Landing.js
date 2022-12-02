@@ -21,11 +21,6 @@ export class Landing extends PureComponent {
     } else if (scope === "driver") {
       landingPage = "/driver/dashboard";
     }
-    // else if (scope === "shopper") {
-    //   landingPage = "/shopper/dashboard";
-    // }else if (scope === "retailShop") {
-    //   landingPage = "/retailShop/dashboard";
-    // }
     return landingPage;
   };
   async componentDidMount() {

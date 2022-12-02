@@ -13,6 +13,7 @@ export class MapContainer extends Component {
   }
 
   render() {
+    console.log(this.props.latlng.lat);
     console.log(this.props.latlng.lon);
     return (
 
@@ -20,11 +21,11 @@ export class MapContainer extends Component {
         google={this.props.google}
         zoom={12}
         style={mapStyles}
-        initialCenter={{ lat: 37.3541, lng: -121.9552 }}
+        initialCenter={{ lat: 37.336381, lng: -121.880971 }}
       >
         <Marker key="Marker_1" position={{
-          lat: this.props.latlng.lat ? this.props.latlng.lat : 37.37784069926635,
-          lng: this.props.latlng.lon ? this.props.latlng.lon : -122.04813115184348
+          lat: this.props.latlng.lat,
+          lng: this.props.latlng.lon
         }}
           onClick={() => console.log("You clicked me!")} />
       </Map>
@@ -32,8 +33,8 @@ export class MapContainer extends Component {
   }
 }
 const mapStyles = {
-  width: '100%',
-  height: '40vh',
+  width: '80%',
+  height: '50vh',
 };
 const apiKey = process.env.REACT_APP_API_KEY;
 export default GoogleApiWrapper({

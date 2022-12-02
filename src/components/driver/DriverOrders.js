@@ -89,13 +89,14 @@ const DriverOrders = () => {
                             Change status
                           </button>
                         </div>
-                        <div className="mt-2">
-                          <button className="btn-primary"
-                            onClick={() => changeLocation(order._id)}>
-                            Start Trip
-                          </button>
-                        </div>
-
+                        {order.status === 'Delivered' ||
+                          <div className="mt-2">
+                            <button className="btn-primary"
+                              onClick={() => changeLocation(order._id)}>
+                              Start Trip
+                            </button>
+                          </div>
+                        }
                       </div>
                     </div>
                   );

@@ -86,4 +86,4 @@ export const fileUrl = (fileId) => {
 
 export const getAnalyticsData = () => get("admin/analytics");
 
-export const getLocations = () => get("location");
+export const getOrderLocation = (orderId) => get(`location/${orderId}`);

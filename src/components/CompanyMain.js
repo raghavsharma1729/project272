@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Overview from './seller/Overview';
-import Item from './seller/JobPosting';
-import SellerOrders from './seller/CompanyJobApplications';
+import Item from './seller/SellerItem';
+import SellerOrders from './seller/SellerOrders';
 
 class SellerMain extends Component {
   render() {

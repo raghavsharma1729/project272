@@ -1,5 +1,5 @@
 import React, { createRef, useEffect, useState } from "react";
-import { searchItem } from "../../util/fetch/api";
+import { fileUrl, searchItem } from "../../util/fetch/api";
 import { formatDate, slicePage } from "../../util";
 import Paginate from "../Paginate";
 
@@ -39,19 +39,22 @@ const ItemSearch = () => {
         <div className="mt-3">
           {items.length === 0 && <div>No products to show</div>}
           {slicePage(items, currentPage).map((item) => {
+            const color = item.status === 'available' ? 'lightGreen' : 'red'
             return (
               <div key={item._id} className="card mb-3">
                 <div className="card-body">
                   <h5>
                     <a
-                      href={`/#/jobHome/${item._id}`}
+                      href={`/#/item/${item._id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {item.title}
                     </a>
                   </h5>
-
+                  <div>
+                    <img src={fileUrl(item.picture)} style={{ width: '250px' }} />
+                  </div>
                   <div>
                     <span className="inputLabel">Brand</span>
                     <span>{item.brand}</span>
@@ -83,6 +86,10 @@ const ItemSearch = () => {
                   <div>
                     <span className="inputLabel">Posted On</span>
                     <span>{formatDate(item.createdAt)}</span>
+                  </div>
+                  <div >
+                    <span className="inputLabel">Status</span>
+                    <span style={{ backgroundColor: color, padding: '6px', borderRadius: 5 }}>{item.status}</span>
                   </div>
                 </div>
               </div>
