@@ -51,8 +51,8 @@ const SellerOrders = () => {
     setCurrentMessage("");
   };
 
-  const fetchMessages = async (jobId) => {
-    const messages = await getMessages(jobId);
+  const fetchMessages = async (orderId) => {
+    const messages = await getMessages(orderId);
     console.log(messages);
     setCurrentMessages(messages.messages);
   };

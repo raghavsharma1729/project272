@@ -52,7 +52,7 @@ const Dashboard = () => {
             <span className="inputLabel"><b>{driver.name}</b></span>/
             &nbsp;<span className="inputLabel">{driver.email}</span>
 
-            <div className="inputLabel">Status - <span>{driver.jobSearchStatus}</span></div>
+            <div className="inputLabel">Status - <span><b>{driver.availabilityStatus}</b></span></div>
 
             <div className="mt-2">
               <button className="btn-primary" onClick={handleOnSave}>Save</button>

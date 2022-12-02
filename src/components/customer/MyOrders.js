@@ -71,8 +71,8 @@ const MyOrders = () => {
     setCurrentMessage("");
   };
 
-  const fetchMessages = async (jobId) => {
-    const messages = await getMessages(jobId);
+  const fetchMessages = async (orderId) => {
+    const messages = await getMessages(orderId);
     setCurrentMessages(messages.messages);
   };
 

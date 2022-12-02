@@ -6,7 +6,7 @@ import Signup from "./components/Signup";
 import CustomerMain from "./components/CustomerMain";
 import SellerMain from "./components/CompanyMain";
 import Logout from "./components/Logout";
-import ItemHomeMain from "./components/JobHomeMain";
+import ItemHomeMain from "./components/ItemHomeMain";
 import CustomerHomeMain from "./components/CustomerHomeMain";
 import DriverMain from "./components/DriverMain";
 
