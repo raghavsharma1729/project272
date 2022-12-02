@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useState } from 'react';
 import {
-  currentUser, fileUrl, updateEmployee,
+  currentUser, fileUrl, updateCustomer,
 } from '../../util/fetch/api';
 import FileUpload from '../common/FileUpload';
 
@@ -23,13 +23,13 @@ const ProfileAndActivity = () => {
     const d = {
       name: nameRef.current.value,
     };
-    await updateEmployee(d);
+    await updateCustomer(d);
     await reloadProfile();
   };
 
   const handleOnFileUpload = async ({ files }) => {
     const fileId = files[0];
-    await updateEmployee({ profilePic: fileId });
+    await updateCustomer({ profilePic: fileId });
     setEmployee({ ...employee, profilePic: fileId });
   };
 

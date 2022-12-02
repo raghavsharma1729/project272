@@ -1,23 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import _ from "lodash";
 import {
-  getCompanyJobApplications,
-  getJobPosting,
-  setJobApplicationStatus,
+  getSellerOrders,
+  getItems,
+  setOrderStatus,
   assignDriverToOrder,
   getLocations,
   postMessage,
   getMessages,
 } from "../../util/fetch/api";
 import { formatDate } from "../../util";
-import MapContainer from "../employee/MapContainer";
+import MapContainer from "../customer/MapContainer";
 import { Divider, Grid, CircularProgress, Button } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import RefreshIcon from "@material-ui/icons/Refresh";
 
-const CompanyJobApplications = () => {
-  const [jobApplications, setJobApplications] = useState({});
-  const [jobPosting, setJobPosting] = useState([]);
+const SellerOrders = () => {
+  const [orders, setOrders] = useState({});
+  const [items, setItems] = useState([]);
   const [location, setLocation] = useState({
     lat: null,
     lon: null,
@@ -36,10 +36,10 @@ const CompanyJobApplications = () => {
 
   useEffect(() => {
     (async () => {
-      const jobPosting = await getJobPosting();
-      const jobApplications = await getCompanyJobApplications();
-      setJobPosting(jobPosting);
-      setJobApplications(_.groupBy(jobApplications, "job._id"));
+      const sellerItems = await getItems();
+      const sellerOrders = await getSellerOrders();
+      setItems(sellerItems);
+      setOrders(_.groupBy(sellerOrders, "item._id"));
     })();
   }, []);
 
@@ -59,7 +59,7 @@ const CompanyJobApplications = () => {
 
   const handleOnChangeStatus = async (id) => {
     const status = statusRef.current[id].value;
-    await setJobApplicationStatus(id, { status });
+    await setOrderStatus(id, { status });
     window.alert("Status updated.");
   };
 
@@ -99,16 +99,16 @@ const CompanyJobApplications = () => {
           {" "}
           {message.sender !== userId
             ? new Date(message.timestamp).getHours() +
-              ":" +
-              new Date(message.timestamp).getMinutes() +
-              "  "
+            ":" +
+            new Date(message.timestamp).getMinutes() +
+            "  "
             : null}{" "}
           {message.message}{" "}
           {message.sender === userId
             ? "   " +
-              new Date(message.timestamp).getHours() +
-              ":" +
-              new Date(message.timestamp).getMinutes()
+            new Date(message.timestamp).getHours() +
+            ":" +
+            new Date(message.timestamp).getMinutes()
             : null}
         </div>
       </div>
@@ -119,8 +119,8 @@ const CompanyJobApplications = () => {
     <div className="row">
       <div className="col-6">
         <h6>Product orders</h6>
-        {jobPosting.length === 0 && <div>You have not got any orders yet</div>}
-        {jobPosting.map((jp) => {
+        {items.length === 0 && <div>You have not got any orders yet</div>}
+        {items.map((jp) => {
           return (
             <div key={jp._id} className="card mb-3">
               <div className="card-body">
@@ -132,17 +132,17 @@ const CompanyJobApplications = () => {
                   <span>
                     {" "}
                     (has{" "}
-                    {jobApplications[jp._id]
-                      ? jobApplications[jp._id].length
+                    {orders[jp._id]
+                      ? orders[jp._id].length
                       : "no"}{" "}
                     orders)
                   </span>
                 </div>
-                {jobApplications[jp._id] ? (
+                {orders[jp._id] ? (
                   <div>
-                    {jobApplications[jp._id].map((jobApplication) => {
+                    {orders[jp._id].map((order) => {
                       return (
-                        <div key={jobApplication._id} className="card mb-3">
+                        <div key={order._id} className="card mb-3">
                           <div className="card-body">
                             <div>
                               <span>
@@ -151,9 +151,9 @@ const CompanyJobApplications = () => {
                                 </span>
                                 <a
                                   target="_blank"
-                                  href={`#/employeeHome/${jobApplication.employee._id}`}
+                                  href={`#/customerHome/${order.customer._id}`}
                                 >
-                                  {jobApplication.employee.name}
+                                  {order.customer.name}
                                 </a>
                               </span>
                             </div>
@@ -163,9 +163,9 @@ const CompanyJobApplications = () => {
                               </span>
                               <select
                                 ref={(el) =>
-                                  (statusRef.current[jobApplication._id] = el)
+                                  (statusRef.current[order._id] = el)
                                 }
-                                defaultValue={jobApplication.status}
+                                defaultValue={order.status}
                               >
                                 <option value="Order placed">
                                   Order placed
@@ -182,27 +182,27 @@ const CompanyJobApplications = () => {
                             <div>
                               <span className="inputLabel small">
                                 Order placed on{" "}
-                                {formatDate(jobApplication.createdAt)}
+                                {formatDate(order.createdAt)}
                               </span>
                             </div>
                             <div className="mt-2">
                               <button
                                 className="btn-primary"
                                 onClick={() =>
-                                  handleOnChangeStatus(jobApplication._id)
+                                  handleOnChangeStatus(order._id)
                                 }
                               >
                                 Change status
                               </button>
                             </div>
-                            {jobApplication.driver ? (
-                              "Driver Name" + " " + jobApplication.driver.name
+                            {order.driver ? (
+                              "Driver Name" + " " + order.driver.name
                             ) : (
                               <div className="mt-2">
                                 <button
                                   className="btn-primary"
                                   onClick={() =>
-                                    assignDriver(jobApplication._id)
+                                    assignDriver(order._id)
                                   }
                                 >
                                   Assign driver
@@ -213,7 +213,7 @@ const CompanyJobApplications = () => {
                             <div className="mt-3">
                               <button
                                 className="btn-danger"
-                                onClick={() => enableMap(jobApplication._id)}
+                                onClick={() => enableMap(order._id)}
                               >
                                 Track Order
                               </button>
@@ -221,7 +221,7 @@ const CompanyJobApplications = () => {
                             <div className="mt-3">
                               <button
                                 className="btn-danger"
-                                onClick={() => enableMessages(jobApplication)}
+                                onClick={() => enableMessages(order)}
                               >
                                 Start Messaging
                               </button>
@@ -259,7 +259,7 @@ const CompanyJobApplications = () => {
           }}
         >
           <div style={{ width: "100%", padding: "5px", marginLeft: "10px" }}>
-            {currentOrder != null ? currentOrder.employee.name : null}
+            {currentOrder != null ? currentOrder.customer.name : null}
             <div style={{ float: "right", marginRight: "20px" }}>
               <IconButton
                 style={{ fontSize: "10px" }}
@@ -274,8 +274,8 @@ const CompanyJobApplications = () => {
           <div>
             {currentMessages.length > 0
               ? currentMessages.map((message) => {
-                  return renderCurrentMessage(message, userId);
-                })
+                return renderCurrentMessage(message, userId);
+              })
               : null}
           </div>
         </div>
@@ -318,6 +318,6 @@ const CompanyJobApplications = () => {
   );
 };
 
-CompanyJobApplications.propTypes = {};
+SellerOrders.propTypes = {};
 
-export default CompanyJobApplications;
+export default SellerOrders;

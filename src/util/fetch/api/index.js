@@ -2,15 +2,15 @@ import { get, post, destroy, put, apiUrl } from "..";
 
 export const currentUser = () => get("currentUser");
 export const loginUser = (type, d) => put(`login/${type}`, d);
-export const signupCompany = (d) => post("signup/company", d);
-export const signupEmployee = (d) => post("signup/employee", d);
+export const signupSeller = (d) => post("signup/seller", d);
+export const signupCustomer = (d) => post("signup/customer", d);
 export const signupDriver = (d) => post("signup/driver", d);
-export const signupShopper = (d) => post("signup/shopper", d);
-export const signupRetailShop = (d) => post("signup/retailShop", d);
-export const updateCompany = (d) => put("company", d);
+// export const signupShopper = (d) => post("signup/shopper", d);
+// export const signupRetailShop = (d) => post("signup/retailShop", d);
+export const updateSeller = (d) => put("seller", d);
 export const updateRetailShop = (d) => put("retailShop", d);
-export const addJobPosting = (d) => post("jobPosting", d);
-export const getJobPosting = () => get("jobPosting");
+export const addItem = (d) => post("item", d);
+export const getItems = () => get("item");
 export const getJobPostingByCompanyId = (companyId) =>
   get(`company/${companyId}/jobPosting`);
 export const getShopperOrders = () => get("shopper/orders");
@@ -18,30 +18,29 @@ export const getRetailShops = () => get("shops");
 export const getRetailShopItems = (shopId) => get(`shop/${shopId}/items`);
 export const getMyRetailShopItems = (shopId) =>
   get(`retailShop/${shopId}/items`);
-export const updateEmployee = (d) => put("employee", d);
+export const updateCustomer = (d) => put("customer", d);
 export const addRetailItem = (d) => post("items", d);
 export const updateDriver = (d) => put("driver", d);
 export const updateShopper = (d) => put("shopper", d);
 export const searchCompany = (text) => get(`search/company?text=${text}`);
-export const searchJobPosting = (text) => get(`search/jobPosting?text=${text}`);
+export const searchItem = (text) => get(`search/item?text=${text}`);
 export const getCompany = (id) => get(`company/profile/${id}`);
-export const getJob = (id) => get(`job/${id}`);
+export const getItem = (id) => get(`item/${id}`);
 export const getMessages = (id) => get(`message/${id}`);
 export const createRetailOrder = (d, id) => post(`order/${id}/place`, d);
 
-export const applyJob = (id, d) => put(`jobApplication/${id}`, d);
-export const withdrawJobApplication = (id) => destroy(`jobApplication/${id}`);
+export const putOrder = (id, d) => put(`order/${id}`, d);
+export const cancleOrder = (id) => destroy(`order/${id}`);
 export const addResume = (id, d) => post(`resume/${id}`, d);
 export const setPrimaryResume = (id) => put(`resume/primary/${id}`);
-export const getCompanyJobApplications = () => get("company/jobApplications");
-export const getDriverJobApplications = () => get("driver/jobApplications");
+export const getSellerOrders = () => get("seller/orders");
+export const getDriverOrders = () => get("driver/orders");
 
-export const getEmployeeJobApplications = () => get("employee/jobApplications");
-export const getCustomerRetailOrders = () => get("customer/retailOrders");
+export const getCustomerOrders = () => get("customer/orders");
 export const getRetailShopOrders = () => get("retailShop/orders");
-export const getEmployee = (id) => get(`employee/profile/${id}`);
-export const setJobApplicationStatus = (id, d) =>
-  put(`company/jobApplication/status/${id}`, d);
+export const getCustomer = (id) => get(`customer/profile/${id}`);
+export const setOrderStatus = (id, d) =>
+  put(`seller/order/status/${id}`, d);
 export const setTripLocation = (id, d) => put(`orders/location/${id}`, d);
 export const assignDriverToOrder = (id) => put(`assignDriver/${id}`);
 export const assignShopperToOrder = (id) => put(`order/${id}/assignShopper`);

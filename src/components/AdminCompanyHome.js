@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Route, withRouter } from 'react-router-dom';
-import CompanyOverview from './companyHome/CompanyOverview';
-import AdminCompanyReviews from './companyHome/AdminCompanyReviews';
+import CompanyOverview from './sellerHome/CompanyOverview';
+import AdminCompanyReviews from './sellerHome/AdminCompanyReviews';
 import AdminCompanyReport from './admin/AdminCompanyReport';
 
 class AdminCompanyHome extends PureComponent {

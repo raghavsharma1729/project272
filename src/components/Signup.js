@@ -2,11 +2,9 @@ import React, { useRef } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
-  signupCompany,
+  signupSeller,
   signupDriver,
-  signupEmployee,
-  signupShopper,
-  signupRetailShop,
+  signupCustomer,
 } from "../util/fetch/api";
 
 const Signup = ({ type, history }) => {
@@ -16,36 +14,21 @@ const Signup = ({ type, history }) => {
   const shopId = useRef();
 
   const handleSignUp = () => {
-    const d =
-      type === "shopper"
-        ? {
-            name: name.current.value,
-            email: email.current.value,
-            password: password.current.value,
-            retailShop: shopId.current.value,
-          }
-        : {
-            name: name.current.value,
-            email: email.current.value,
-            password: password.current.value,
-          };
-    if (type === "company") {
-      signupCompany(d).then(({ token, user }) => {
+    const d = {
+      name: name.current.value,
+      email: email.current.value,
+      password: password.current.value,
+    };
+    if (type === "seller") {
+      signupSeller(d).then(({ token, user }) => {
         window.localStorage.setItem("token", token);
         window.localStorage.setItem("userId", user._id);
 
-        history.push("/company/overview");
+        history.push("/seller/overview");
       });
     }
-    if (type === "retailShop") {
-      signupRetailShop(d).then(({ token, user }) => {
-        window.localStorage.setItem("token", token);
-        window.localStorage.setItem("userId", user._id);
-        history.push("/retailShop/dashboard"); //todo
-      });
-    }
-    if (type === "employee") {
-      signupEmployee(d).then(({ token, user }) => {
+    if (type === "customer") {
+      signupCustomer(d).then(({ token, user }) => {
         window.localStorage.setItem("token", token);
         window.localStorage.setItem("userId", user._id);
 
@@ -60,20 +43,11 @@ const Signup = ({ type, history }) => {
         history.push("/driver/dashboard");
       });
     }
-    if (type === "shopper") {
-      signupShopper(d).then(({ token, user }) => {
-        window.localStorage.setItem("token", token);
-        window.localStorage.setItem("userId", user._id);
-        history.push("/shopper/dashboard");
-      });
-    }
   };
   const getSignUpType = () => {
-    if (type === "employee") return "Customer";
+    if (type === "customer") return "Customer";
     else if (type === "company") return "Company";
-    else if (type === "shopper") return "Shopper";
     else if (type === "driver") return "Driver";
-    else if (type === "retailShop") return "RetailShop";
     else return "Customer";
   };
   let shopPicker;
@@ -94,7 +68,7 @@ const Signup = ({ type, history }) => {
       <div className="row">
         <div className="col-4" />
         <div className="col-4">
-          <h2 className="text-center mt-5">Cargo Shippers Signup</h2>
+          <h2 className="text-center mt-5">SignUp</h2>
           <div className="text-center mt-5">Signup as a {getSignUpType()}</div>
           <div className="form-group mt-5">
             <input

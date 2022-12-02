@@ -1,26 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
 import _ from 'lodash';
 import {
-  getDriverJobApplications, getJobPosting, setJobApplicationStatus, assignDriverToOrder, setTripLocation
+  getDriverOrders, getItems, setOrderStatus, assignDriverToOrder, setTripLocation
 } from '../../util/fetch/api';
 import { formatDate } from '../../util';
 
 const DriverOrders = () => {
-  const [jobApplications, setJobApplications] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   const statusRef = useRef({});
 
   useEffect(() => {
     (async () => {
-      const jobApplications = await getDriverJobApplications();
-      console.log("hurray" + jobApplications);
-      setJobApplications(jobApplications);
+      const driverorders = await getDriverOrders();
+      console.log("hurray" + driverorders);
+      setOrders(driverorders);
     })();
   }, []);
 
   const handleOnChangeStatus = async (id) => {
     const status = statusRef.current[id].value;
-    await setJobApplicationStatus(id, { status });
+    await setOrderStatus(id, { status });
     window.alert('Status updated.');
   };
 
@@ -48,43 +48,50 @@ const DriverOrders = () => {
     <div className="row">
       <div className="col-6">
         <h6>Product orders</h6>
-        {jobApplications.length === 0 && <div>You have not got any deliveries yet</div>}
-        {jobApplications
+        {orders.length === 0 && <div>You have not got any deliveries yet</div>}
+        {orders
           ? (
             <div>
-              {jobApplications
-                .map((jobApplication) => {
+              {orders
+                .map((order) => {
                   return (
-                    <div key={jobApplication._id} className="card mb-3">
+                    <div key={order._id} className="card mb-3">
                       <div className="card-body">
                         <div>
                           <span><span className="inputLabel">Order placed by</span>
-                            <a target="_blank" href={`#/employeeHome/${jobApplication.employee._id}`}>
-                              {jobApplication.employee.name}
+                            <a target="_blank" href={`#/customerHome/${order.customer._id}`}>
+                              {order.customer.name}
                             </a>
                           </span>
                         </div>
                         <div>
+                          <span><span className="inputLabel">Current Order Status</span>
+                            <span>
+                              {order.status}
+                            </span>
+                          </span>
+                        </div>
+                        <div>
                           <span className="inputLabel">Change order status</span>
-                          <select ref={(el) => statusRef.current[jobApplication._id] = el}
-                            defaultValue={jobApplication.status}>
+                          <select ref={(el) => statusRef.current[order._id] = el}
+                            defaultValue={order.status}>
                             <option value="Out for delivery">Out for delivery</option>
                             <option value="Delivered">Delivered</option>
                             <option value="Cancelled">Cancelled</option>
                           </select>
                         </div>
                         <div><span
-                          className="inputLabel small">Order placed on {formatDate(jobApplication.createdAt)}</span>
+                          className="inputLabel small">Order placed on {formatDate(order.createdAt)}</span>
                         </div>
                         <div className="mt-2">
                           <button className="btn-primary"
-                            onClick={() => handleOnChangeStatus(jobApplication._id)}>
+                            onClick={() => handleOnChangeStatus(order._id)}>
                             Change status
                           </button>
                         </div>
                         <div className="mt-2">
                           <button className="btn-primary"
-                            onClick={() => changeLocation(jobApplication._id)}>
+                            onClick={() => changeLocation(order._id)}>
                             Start Trip
                           </button>
                         </div>

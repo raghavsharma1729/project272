@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import Overview from './company/Overview';
-import JobPosting from './company/JobPosting';
-import CompanyJobApplications from './company/CompanyJobApplications';
+import Overview from './seller/Overview';
+import Item from './seller/JobPosting';
+import SellerOrders from './seller/CompanyJobApplications';
 
-class CompanyMain extends Component {
+class SellerMain extends Component {
   render() {
     return (
       <>
         <nav className="navbar navbar-expand-lg bg-dark">
           <a className="navbar-brand text-light" href="#/">Cargo Shippers</a>
-          <a className="nav-link text-light" href="#/company/overview">Overview</a>
-          <a className="nav-link text-light" href="#/company/jobPosting">Different Packages</a>
-          <a className="nav-link text-light" href="#/company/companyJobApplications">Orders</a>
+          <a className="nav-link text-light" href="#/seller/overview">Overview</a>
+          <a className="nav-link text-light" href="#/seller/items">Items</a>
+          <a className="nav-link text-light" href="#/seller/orders">Orders</a>
           <a className="nav-link" href="#/logout">Logout</a>
         </nav>
         <div className="container mt-3">
-          <Route path="/company/overview" exact>
+          <Route path="/seller/overview" exact>
             <Overview />
           </Route>
-          <Route path="/company/jobPosting" exact>
-            <JobPosting />
+          <Route path="/seller/items" exact>
+            <Item />
           </Route>
-          <Route path="/company/companyJobApplications" exact>
-            <CompanyJobApplications />
+          <Route path="/seller/orders" exact>
+            <SellerOrders />
           </Route>
         </div>
       </>
@@ -31,4 +31,4 @@ class CompanyMain extends Component {
   }
 }
 
-export default CompanyMain;
+export default SellerMain;

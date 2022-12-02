@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import ProfileAndActivity from "./employee/ProfileAndActivity";
-import Demographics from "./employee/Demographics";
-import MyJobApplications from "./employee/MyJobApplications";
-import JobSearch from "./employee/JobSearch";
+import ProfileAndActivity from "./customer/ProfileAndActivity";
+import Demographics from "./customer/Demographics";
+import MyOrders from "./customer/MyJobApplications";
+import ItemSearch from "./customer/JobSearch";
 import RetailShops from "./retailShop/RetailsShops";
 
 class EmployeeMain extends Component {
@@ -20,31 +20,22 @@ class EmployeeMain extends Component {
           <a className="nav-link text-light" href="#/buyer/orders">
             My orders
           </a>
-          <a className="nav-link text-light" href="#/buyer/retailShops">
-            Retail Shops
-          </a>
           <a className="nav-link text-light" href="#/buyer/profileAndActivity">
             My profile
           </a>
           <a className="nav-link text-light" href="#/buyer/address">
             Address
           </a>
-          <a className="nav-link text-light" href="#/buyer/address">
-            File{" "}
-          </a>
           <a className="nav-link" href="#/logout">
             Logout
           </a>
         </nav>
         <div className="container mt-3">
-          <Route path="/buyer/retailShops" exact>
-            <RetailShops />
-          </Route>
           <Route path="/buyer/search" exact>
-            <JobSearch />
+            <ItemSearch />
           </Route>
           <Route path="/buyer/orders" exact>
-            <MyJobApplications />
+            <MyOrders />
           </Route>
           <Route path="/buyer/profileAndActivity" exact>
             <ProfileAndActivity />

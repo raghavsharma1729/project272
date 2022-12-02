@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Route, withRouter } from 'react-router-dom';
-import CompanyOverview from './companyHome/CompanyOverview';
-import CompanyJobs from './companyHome/CompanyJobs';
-import CompanySalaries from './companyHome/CompanySalaries';
-import CompanyReviews from './companyHome/CompanyReviews';
-import CompanyPhotos from './companyHome/CompanyPhotos';
-import CompanyInterviews from './companyHome/CompanyInterviews';
+import CompanyOverview from './sellerHome/CompanyOverview';
+import CompanyJobs from './sellerHome/CompanyJobs';
+import CompanySalaries from './sellerHome/CompanySalaries';
+import CompanyReviews from './sellerHome/CompanyReviews';
+import CompanyPhotos from './sellerHome/CompanyPhotos';
+import CompanyInterviews from './sellerHome/CompanyInterviews';
 
 class CompanyHomeMain extends PureComponent {
   constructor(props) {

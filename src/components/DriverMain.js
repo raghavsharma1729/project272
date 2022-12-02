@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import ProfileAndActivity from "./employee/ProfileAndActivity";
-import Demographics from "./employee/Demographics";
-import MyJobApplications from "./employee/MyJobApplications";
-import JobSearch from "./employee/JobSearch";
+import ProfileAndActivity from "./customer/ProfileAndActivity";
+import Demographics from "./customer/Demographics";
+import MyOrders from "./customer/MyJobApplications";
+import ItemSearch from "./customer/JobSearch";
 import Dashboard from "./driver/Dashboard";
 import DriverOrders from "./driver/DriverOrders";
 
@@ -22,17 +22,6 @@ class DriverMain extends Component {
           <a className="nav-link text-light" href="#/driver/orders">
             My orders
           </a>
-          
-          {/* <a className="nav-link text-light" href="#/buyer/search">
-            Search products
-          </a>
-         
-          <a className="nav-link text-light" href="#/buyer/profileAndActivity">
-            My profile
-          </a>
-          <a className="nav-link text-light" href="#/buyer/address">
-            Address
-          </a> */}
           <a className="nav-link" href="#/logout">
             Logout
           </a>
@@ -42,16 +31,11 @@ class DriverMain extends Component {
             <Dashboard />
           </Route>
           {
-          
-          <Route path="/driver/orders" exact>
-            < DriverOrders/>
-          </Route>
-          /*<Route path="/buyer/profileAndActivity" exact>
-            <ProfileAndActivity />
-          </Route>
-          <Route path="/buyer/address" exact>
-            <Demographics />
-          </Route> */}
+
+            <Route path="/driver/orders" exact>
+              < DriverOrders />
+            </Route>
+          }
         </div>
       </>
     );
