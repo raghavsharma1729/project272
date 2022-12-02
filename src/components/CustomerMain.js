@@ -4,9 +4,8 @@ import ProfileAndActivity from "./customer/ProfileAndActivity";
 import Demographics from "./customer/Demographics";
 import MyOrders from "./customer/MyOrders";
 import ItemSearch from "./customer/JobSearch";
-import RetailShops from "./retailShop/RetailsShops";
 
-class EmployeeMain extends Component {
+class CustomerMain extends Component {
   render() {
     return (
       <>
@@ -49,4 +48,4 @@ class EmployeeMain extends Component {
   }
 }
 
-export default EmployeeMain;
+export default CustomerMain;

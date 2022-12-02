@@ -3,13 +3,11 @@ import "./App.css";
 import { HashRouter, Route, Switch } from "react-router-dom";
 import Landing from "./components/Landing";
 import Signup from "./components/Signup";
-import EmployeeMain from "./components/EmployeeMain";
+import CustomerMain from "./components/CustomerMain";
 import SellerMain from "./components/CompanyMain";
 import Logout from "./components/Logout";
 import ItemHomeMain from "./components/JobHomeMain";
-import CompanyHomeMain from "./components/SellerHomeMain";
-import AdminCompanyHome from "./components/AdminCompanyHome";
-import CustomerHomeMain from "./components/EmployeeHomeMain";
+import CustomerHomeMain from "./components/CustomerHomeMain";
 import DriverMain from "./components/DriverMain";
 
 
@@ -20,10 +18,6 @@ function App() {
         <Route path="/" exact>
           <Landing />
         </Route>
-        <Route path="/sellerHome/:id">
-          <CompanyHomeMain />
-        </Route>
-        {/* <Route path="/sellerHomePage/:id" component={AdminCompanyHome} /> */}
         <Route path="/item/:id">
           <ItemHomeMain />
         </Route>
@@ -34,7 +28,7 @@ function App() {
           <SellerMain />
         </Route>
         <Route path="/buyer">
-          <EmployeeMain />
+          <CustomerMain />
         </Route>
         <Route path="/driver">
           <DriverMain />

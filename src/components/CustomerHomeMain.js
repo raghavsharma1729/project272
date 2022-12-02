@@ -17,7 +17,7 @@ class CustomerHomeMain extends PureComponent {
     return (
       <>
         <nav className="navbar navbar-expand-lg bg-dark">
-          <a className="navbar-brand text-light" href="#/">Marketplace</a>
+          <a className="navbar-brand text-light" href="#/">ReSellit</a>
         </nav>
         <div className="container mt-3" />
         <div className="col-12 text-center">
