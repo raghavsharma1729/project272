@@ -14,7 +14,7 @@ class DriverMain extends Component {
       <>
         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
           <a className="navbar-brand text-light" href="#/">
-            Cargo Shippers
+            ReSellit
           </a>
           <a className="nav-link text-light" href="#/driver/dashboard">
             Dashboard

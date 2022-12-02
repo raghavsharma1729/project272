@@ -9,7 +9,7 @@ class SellerMain extends Component {
     return (
       <>
         <nav className="navbar navbar-expand-lg bg-dark">
-          <a className="navbar-brand text-light" href="#/">Cargo Shippers</a>
+          <a className="navbar-brand text-light" href="#/">ReSellit</a>
           <a className="nav-link text-light" href="#/seller/overview">Overview</a>
           <a className="nav-link text-light" href="#/seller/items">Items</a>
           <a className="nav-link text-light" href="#/seller/orders">Orders</a>

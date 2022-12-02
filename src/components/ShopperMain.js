@@ -13,7 +13,7 @@ class ShopperMain extends Component {
       <>
         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
           <a className="navbar-brand text-light" href="#/">
-            Cargo Shippers
+            ReSellit
           </a>
           <a className="nav-link text-light" href="#/shopper/dashboard">
             Dashboard
@@ -21,17 +21,6 @@ class ShopperMain extends Component {
           <a className="nav-link text-light" href="#/shopper/orders">
             My orders
           </a>
-
-          {/* <a className="nav-link text-light" href="#/buyer/search">
-            Search products
-          </a>
-         
-          <a className="nav-link text-light" href="#/buyer/profileAndActivity">
-            My profile
-          </a>
-          <a className="nav-link text-light" href="#/buyer/address">
-            Address
-          </a> */}
           <a className="nav-link" href="#/logout">
             Logout
           </a>

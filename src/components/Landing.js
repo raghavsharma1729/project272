@@ -46,7 +46,7 @@ export class Landing extends PureComponent {
         <div className="row">
           <div className="col-3" />
           <div className="col-10">
-            <div className="h3 text-center mt-3">Cargo Shippers</div>
+            <div className="h3 text-center mt-3">ReSellit</div>
             <div className="text-center">
               <Container>
                 <FormControl>

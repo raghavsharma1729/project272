@@ -26,7 +26,7 @@ const ItemHomeMain = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg  bg-dark">
-        <a className="navbar-brand text-light" href="#/">Cargo Shippers</a>
+        <a className="navbar-brand text-light" href="#/">ReSellit</a>
         <a className="nav-link" href="#/logout">Logout</a>
       </nav>
       <div className="container">

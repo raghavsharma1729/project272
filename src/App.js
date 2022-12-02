@@ -23,7 +23,7 @@ function App() {
         <Route path="/sellerHome/:id">
           <CompanyHomeMain />
         </Route>
-        <Route path="/sellerHomePage/:id" component={AdminCompanyHome} />
+        {/* <Route path="/sellerHomePage/:id" component={AdminCompanyHome} /> */}
         <Route path="/item/:id">
           <ItemHomeMain />
         </Route>
