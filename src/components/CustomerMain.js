@@ -11,7 +11,7 @@ class CustomerMain extends Component {
       <>
         <nav className="navbar navbar-expand-lg navbar-light bg-dark">
           <a className="navbar-brand text-light" href="#/">
-            ReSellit
+            re$ellit
           </a>
           <a className="nav-link text-light" href="#/buyer/search">
             Search Packages

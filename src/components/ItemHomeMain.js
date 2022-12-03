@@ -28,7 +28,7 @@ const ItemHomeMain = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg  bg-dark">
-        <a className="navbar-brand text-light" href="#/">ReSellit</a>
+        <a className="navbar-brand text-light" href="#/">re$ellit</a>
         <a className="nav-link text-light" href="#/buyer/search">Search Items</a>
         <a className="nav-link" href="#/logout">Logout</a>
       </nav>
@@ -39,7 +39,7 @@ const ItemHomeMain = () => {
               <>
                 <h5>{item.title}</h5>
                 <div >
-                  {item.seller.profilePic
+                  {item.picture
                     ? <img src={fileUrl(item.picture)} alt="" style={{ width: '350px' }} />
                     : <div>No pic available</div>}
                 </div>
